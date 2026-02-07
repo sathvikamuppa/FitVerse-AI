@@ -1,257 +1,272 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>StyleSense – AI Fashion Stylist</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StyleSense – AI Fashion Stylist</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <style>
-    * { box-sizing: border-box; }
+<style>
+*{box-sizing:border-box}
 
-    body {
-      font-family: "Poppins", sans-serif;
-      background: linear-gradient(180deg, #faf8ff, #f3efff);
-      margin: 0;
-      color: #3b3b4f;
-    }
+body{
+  font-family:Poppins,sans-serif;
+  margin:0;
+  background:linear-gradient(180deg,#faf8ff,#f3efff);
+  color:#3b3b4f;
+}
 
-    header {
-      background: linear-gradient(135deg, #c7b8ff, #f2c6e8);
-      color: white;
-      padding: 55px 20px;
-      text-align: center;
-      border-bottom-left-radius: 40px;
-      border-bottom-right-radius: 40px;
-      box-shadow: 0 10px 30px rgba(122, 92, 255, 0.25);
-    }
+header{
+  background:linear-gradient(135deg,#c7b8ff,#f2c6e8);
+  color:#fff;
+  padding:55px 20px;
+  text-align:center;
+  border-radius:0 0 40px 40px;
+  box-shadow:0 10px 30px rgba(122,92,255,.25);
+}
 
-    section {
-      max-width: 950px;
-      margin: auto;
-      padding: 50px 20px;
-    }
+section{
+  max-width:950px;
+  margin:auto;
+  padding:50px 20px;
+}
 
-    .card {
-      background: white;
-      border-radius: 20px;
-      padding: 30px;
-      margin-bottom: 35px;
-      box-shadow: 0 12px 30px rgba(120, 90, 255, 0.12);
-    }
+.card{
+  background:#fff;
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 12px 30px rgba(120,90,255,.12);
+}
 
-    h2 { color: #6a55ff; }
+h2{color:#6a55ff}
 
-    label {
-      display: block;
-      margin-top: 16px;
-      font-size: 13px;
-      font-weight: 600;
-    }
+label{
+  display:block;
+  margin-top:16px;
+  font-size:13px;
+  font-weight:600;
+}
 
-    select, textarea, input {
-      width: 100%;
-      padding: 12px;
-      margin-top: 6px;
-      border-radius: 12px;
-      border: 1px solid #ddd6ff;
-      background: #fbfaff;
-    }
+select{
+  width:100%;
+  padding:12px;
+  margin-top:6px;
+  border-radius:12px;
+  border:1px solid #ddd6ff;
+  background:#fbfaff;
+}
 
-    button {
-      margin-top: 22px;
-      padding: 14px;
-      border-radius: 30px;
-      border: none;
-      background: linear-gradient(135deg, #7f6bff, #b28cff);
-      color: white;
-      font-weight: 600;
-      cursor: pointer;
-      box-shadow: 0 10px 25px rgba(123, 92, 255, 0.35);
-    }
+/* 🔥 AI BUTTON */
+button{
+  margin-top:22px;
+  padding:15px 40px;
+  border-radius:35px;
+  border:none;
+  background:linear-gradient(135deg,#7f6bff,#b28cff);
+  color:#fff;
+  font-weight:600;
+  cursor:pointer;
+  transition:.3s;
+  box-shadow:0 10px 25px rgba(123,92,255,.35);
+}
 
-    .output {
-      margin-top: 20px;
-      background: linear-gradient(135deg, #f6f3ff, #fde8f3);
-      padding: 18px;
-      border-radius: 14px;
-      line-height: 1.7;
-    }
+button:hover{
+  transform:translateY(-4px) scale(1.03);
+  box-shadow:0 18px 40px rgba(123,92,255,.45);
+}
 
-    .shop-links {
-      display: flex;
-      gap: 15px;
-      margin-top: 20px;
-      flex-wrap: wrap;
-    }
+button:active{transform:scale(.97)}
 
-    .shop-links a {
-      flex: 1;
-      text-align: center;
-      padding: 12px;
-      border-radius: 25px;
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      cursor: pointer;
-    }
+@keyframes glow{
+  0%{box-shadow:0 0 0 rgba(178,140,255,.6)}
+  50%{box-shadow:0 0 25px rgba(178,140,255,.9)}
+  100%{box-shadow:0 0 0 rgba(178,140,255,.6)}
+}
 
-    .amazon { background: #ff9900; }
-    .flipkart { background: #2874f0; }
-    .myntra { background: #ff3f6c; }
+button.thinking{animation:glow 1.3s infinite}
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 13px;
-      color: #8a87a8;
-    }
-  </style>
+.output{
+  margin-top:20px;
+  padding:18px;
+  border-radius:14px;
+  background:linear-gradient(135deg,#f6f3ff,#fde8f3);
+}
+
+.shop-links{
+  display:flex;
+  gap:15px;
+  margin-top:20px;
+}
+
+.shop-links a{
+  flex:1;
+  text-align:center;
+  padding:12px;
+  border-radius:25px;
+  color:#fff;
+  font-weight:600;
+  text-decoration:none;
+  cursor:pointer;
+}
+
+.amazon{background:#ff9900}
+.flipkart{background:#2874f0}
+.myntra{background:#ff3f6c}
+
+footer{
+  text-align:center;
+  padding:20px;
+  font-size:13px;
+  color:#8a87a8;
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  <h1>StyleSense</h1>
-  <p>AI-Powered Personal Fashion Stylist</p>
+<h1>StyleSense</h1>
+<p>AI-Powered Personal Fashion Stylist</p>
 </header>
 
 <section>
+<div class="card">
 
-  <div class="card">
-    <h2>👗 Smart Outfit Recommendation</h2>
+<h2>👗 Smart Outfit Recommendation</h2>
 
-    <label>Gender</label>
-    <select id="gender" onchange="updateBodyTypes()">
-      <option>Female</option>
-      <option>Male</option>
-    </select>
+<label>Gender</label>
+<select id="gender" onchange="updateBodyTypes()">
+<option>Female</option>
+<option>Male</option>
+<option>Others</option>
+</select>
 
-    <label>Body Type</label>
-    <select id="bodyType"></select>
+<label>Body Type</label>
+<select id="bodyType"></select>
 
-    <label>Skin Undertone</label>
-    <select id="tone">
-      <option>Warm</option>
-      <option>Cool</option>
-      <option>Neutral</option>
-    </select>
+<label>Skin Undertone</label>
+<select id="tone">
+<option>Warm</option>
+<option>Cool</option>
+<option>Neutral</option>
+</select>
 
-    <label>Occasion</label>
-    <select id="occasion">
-      <option>College</option>
-      <option>Casual</option>
-      <option>Party</option>
-      <option>Wedding</option>
-    </select>
+<label>Occasion</label>
+<select id="occasion">
+<option>College</option>
+<option>Casual</option>
+<option>Party</option>
+<option>Wedding</option>
+</select>
 
-    <label>Season / Weather</label>
-    <select id="season">
-      <option>Summer</option>
-      <option>Winter</option>
-      <option>Rainy</option>
-    </select>
+<label>Season</label>
+<select id="season">
+<option>Summer</option>
+<option>Winter</option>
+<option>Rainy</option>
+</select>
 
-    <button onclick="getRecommendation()">Get AI Style ✨</button>
+<button id="aiBtn" onclick="getRecommendation()">Get AI Style ✨</button>
 
-    <div id="recommendation" class="output"></div>
+<div id="recommendation" class="output"></div>
 
-    <div class="shop-links">
-      <a class="amazon" onclick="openAmazon()">Amazon</a>
-      <a class="flipkart" onclick="openFlipkart()">Flipkart</a>
-      <a class="myntra" onclick="openMyntra()">Myntra</a>
-    </div>
-  </div>
+<div class="shop-links">
+<a class="amazon" onclick="openAmazon()">Amazon</a>
+<a class="flipkart" onclick="openFlipkart()">Flipkart</a>
+<a class="myntra" onclick="openMyntra()">Myntra</a>
+</div>
 
+</div>
 </section>
 
 <footer>© 2026 StyleSense | Hackathon Project</footer>
 
 <script>
-let lastSuggestedOutfits = [];
+let lastSuggestedOutfits=[];
 
-const femaleTypes = ["Hourglass","Pear","Apple","Rectangle","Inverted Triangle"];
-const maleTypes = ["Rectangle","Triangle","Inverted Triangle","Oval","Trapezoid"];
+const femaleTypes=["Hourglass","Pear","Apple","Rectangle","Inverted Triangle"];
+const maleTypes=["Rectangle","Triangle","Inverted Triangle","Oval","Trapezoid"];
 
-function updateBodyTypes() {
-  const gender = document.getElementById("gender").value;
-  const bodyType = document.getElementById("bodyType");
-  bodyType.innerHTML = "";
-  (gender === "Female" ? femaleTypes : maleTypes).forEach(t => {
-    bodyType.add(new Option(t, t));
-  });
+function updateBodyTypes(){
+  const g=document.getElementById("gender").value;
+  const bt=document.getElementById("bodyType");
+  bt.innerHTML="";
+  const types=g==="Female"?femaleTypes:g==="Male"?maleTypes:[...new Set([...femaleTypes,...maleTypes])];
+  types.forEach(t=>bt.add(new Option(t,t)));
 }
 updateBodyTypes();
 
-function getRecommendation() {
-  const gender = document.getElementById("gender").value;
-  const bodyType = document.getElementById("bodyType").value;
-  const tone = document.getElementById("tone").value;
-  const occasion = document.getElementById("occasion").value;
-  const season = document.getElementById("season").value;
+function getRecommendation(){
+  const btn=document.getElementById("aiBtn");
+  btn.classList.add("thinking");
+  btn.innerText="Styling you... ✨";
 
-  const outfits = {
-    Female: {
-      College: { Summer: ["Cotton kurti jeans","Printed kurti palazzo","Top straight jeans"],
-                 Winter: ["Sweater pants","Kurti jacket set","Full sleeve top"],
-                 Rainy: ["Tunic jeans","Cotton top pants","Light kurti"] },
-      Casual: { Summer: ["Floral dress","Top wide jeans","T-shirt skirt"],
-                Winter: ["Cardigan leggings","Sweatshirt jeans","Long top"],
-                Rainy: ["Midi dress","Loose top jeans","Comfort dress"] },
-      Party: { Summer: ["Satin top skirt","Crop top palazzo","One-shoulder dress"],
-               Winter: ["Velvet dress","Sequin top trousers","Blazer dress"],
-               Rainy: ["Statement top jeans","Monochrome dress","Dark outfit"] },
-      Wedding: { Summer: ["Light saree","Georgette lehenga","Anarkali suit"],
-                 Winter: ["Silk saree","Velvet lehenga","Heavy anarkali"],
-                 Rainy: ["Ethnic gown","Soft silk saree","Kurta set"] }
+  setTimeout(()=>{
+    btn.classList.remove("thinking");
+    btn.innerText="Get AI Style ✨";
+  },800);
+
+  const gender=document.getElementById("gender").value;
+  const bodyType=document.getElementById("bodyType").value;
+  const tone=document.getElementById("tone").value;
+  const occasion=document.getElementById("occasion").value;
+  const season=document.getElementById("season").value;
+
+  const outfits={
+    Female:{
+      College:{Summer:["Kurti with jeans"],Winter:["Layered kurti look"],Rainy:["Tunic outfit"]},
+      Casual:{Summer:["Floral dress"],Winter:["Sweater + jeans"],Rainy:["Midi dress"]},
+      Party:{Summer:["Statement dress"],Winter:["Velvet outfit"],Rainy:["Monochrome look"]},
+      Wedding:{Summer:["Lehenga"],Winter:["Velvet lehenga"],Rainy:["Ethnic gown"]}
     },
-    Male: {
-      College: { Summer: ["Cotton shirt chinos","T-shirt jeans","Casual shirt"],
-                 Winter: ["Hoodie jeans","Sweatshirt trousers","Jacket jeans"],
-                 Rainy: ["Jacket t-shirt","Dark shirt jeans","Light jacket"] },
-      Casual: { Summer: ["Polo t-shirt shorts","Printed shirt jeans","Casual tee"],
-                Winter: ["Sweatshirt joggers","Pullover jeans","Casual jacket"],
-                Rainy: ["Denim jacket","Dark tee pants","Comfort wear"] },
-      Party: { Summer: ["Slim fit shirt trousers","Printed shirt chinos","Blazer outfit"],
-               Winter: ["Blazer boots","Turtleneck blazer","Formal jacket"],
-               Rainy: ["Dark shirt pants","Minimal blazer","Monochrome look"] },
-      Wedding: { Summer: ["Kurta pyjama","Printed kurta","Light sherwani"],
-                 Winter: ["Sherwani","Velvet kurta set","Indo western"],
-                 Rainy: ["Kurta Nehru jacket","Silk kurta","Ethnic layers"] }
+    Male:{
+      College:{Summer:["Cotton shirt + chinos"],Winter:["Hoodie + jeans"],Rainy:["Dark casual look"]},
+      Casual:{Summer:["Printed shirt"],Winter:["Sweatshirt outfit"],Rainy:["Denim layers"]},
+      Party:{Summer:["Blazer outfit"],Winter:["Turtleneck blazer"],Rainy:["Minimal formal look"]},
+      Wedding:{Summer:["Kurta pyjama"],Winter:["Sherwani"],Rainy:["Kurta jacket set"]}
+    },
+    Others:{
+      College:{Summer:["Oversized tee + jeans"],Winter:["Layered unisex outfit"],Rainy:["Relaxed fit look"]},
+      Casual:{Summer:["Co-ord set"],Winter:["Sweatshirt + trousers"],Rainy:["Streetwear layers"]},
+      Party:{Summer:["Statement unisex fit"],Winter:["Structured jacket look"],Rainy:["Bold monochrome outfit"]},
+      Wedding:{Summer:["Fusion ethnic wear"],Winter:["Contemporary ensemble"],Rainy:["Elegant neutral outfit"]}
     }
   };
 
-  lastSuggestedOutfits = outfits[gender][occasion][season];
+  lastSuggestedOutfits=outfits[gender][occasion][season];
 
-  document.getElementById("recommendation").innerHTML = `
-    <strong>✨ AI Personalized Outfit Options</strong>
-    <ul>${lastSuggestedOutfits.map(o => `<li>${o}</li>`).join("")}</ul>
+  document.getElementById("recommendation").innerHTML=`
+    <strong>✨ AI Generated Outfit</strong>
+    <ul>${lastSuggestedOutfits.map(o=>`<li>${o}</li>`).join("")}</ul>
+    <b>Gender:</b> ${gender}<br>
     <b>Body Type:</b> ${bodyType}<br>
     <b>Skin Tone:</b> ${tone}<br>
     <b>Season:</b> ${season}
   `;
 }
 
-function formatSearchQuery() {
-  const gender = document.getElementById("gender").value === "Female" ? "women" : "men";
-  const occasion = document.getElementById("occasion").value.toLowerCase();
-  const season = document.getElementById("season").value.toLowerCase();
-  const tone = document.getElementById("tone").value.toLowerCase();
-
+function formatSearchQuery(){
+  const map={Female:"women",Male:"men",Others:"unisex"};
   return encodeURIComponent(
-    `${gender} ${lastSuggestedOutfits.join(" ")} ${occasion} ${season} ${tone}`
+    `${map[document.getElementById("gender").value]} ${lastSuggestedOutfits.slice(0,2).join(" ")}`
   );
 }
 
-function openAmazon() {
-  window.open(`https://www.amazon.in/s?k=${formatSearchQuery()}`, "_blank");
+/* 🔥 HIGH-RATED / POPULAR REDIRECTS */
+function openAmazon(){
+  if(!lastSuggestedOutfits.length) return alert("Generate AI outfit first ✨");
+  window.open(`https://www.amazon.in/s?k=${formatSearchQuery()}&s=exact-aware-popularity-rank`,"_blank");
 }
-function openFlipkart() {
-  window.open(`https://www.flipkart.com/search?q=${formatSearchQuery()}`, "_blank");
+
+function openFlipkart(){
+  if(!lastSuggestedOutfits.length) return alert("Generate AI outfit first ✨");
+  window.open(`https://www.flipkart.com/search?q=${formatSearchQuery()}&sort=popularity`,"_blank");
 }
-function openMyntra() {
-  window.open(`https://www.myntra.com/shop/search?query=${formatSearchQuery()}`, "_blank");
+
+function openMyntra(){
+  if(!lastSuggestedOutfits.length) return alert("Generate AI outfit first ✨");
+  window.open(`https://www.myntra.com/${formatSearchQuery()}?sort=popularity`,"_blank");
 }
 </script>
 
